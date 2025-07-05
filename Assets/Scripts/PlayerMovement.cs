@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     float amountTurnDown = 0.0f;
     CharacterController controller;
     float cameraEulerX = 0.0f;
+    Vector3 potentialEnergy = Vector3.zero;
 
     void Start()
     {
@@ -58,6 +59,17 @@ public class PlayerMovement : MonoBehaviour
         dir += (amountRight - amountLeft) * transform.right;
         dir.Normalize();
         dir *= speed * Time.fixedDeltaTime;
+
+        // Gravity
+        if (controller.isGrounded)
+        {
+            potentialEnergy = Vector3.zero;
+        }
+        else
+        {
+            potentialEnergy += Physics.gravity * Mathf.Pow(Time.fixedDeltaTime, 2.0f) * 0.5f;
+        }
+        dir += potentialEnergy;
 
         controller.Move(dir);
     }
