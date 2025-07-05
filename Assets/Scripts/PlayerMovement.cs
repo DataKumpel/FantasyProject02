@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 1.0f;
     [SerializeField] float rotationSpeed = 1.0f;
     [SerializeField] Transform cameraTransform;
+    [SerializeField] AudioClip[] footstepSounds;
 
     InputAction moveFwdAction;
     InputAction moveBwdAction;
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     CharacterController controller;
     float cameraEulerX = 0.0f;
     Vector3 potentialEnergy = Vector3.zero;
+    AudioSource audioSource;
+    Animator animator;
 
     void Start()
     {
@@ -38,6 +41,17 @@ public class PlayerMovement : MonoBehaviour
         turnUpAction = InputSystem.actions.FindAction("TurnUp");
         turnDownAction = InputSystem.actions.FindAction("TurnDown");
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+    }
+
+    public void PlayFootstepSound()
+    {
+        //if (!controller.isGrounded) return;
+        //audioSource.Stop();
+        audioSource.clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
+        audioSource.Play();
+        Debug.Log("Footstep...");
     }
 
     void ProcessInputs()
@@ -64,10 +78,12 @@ public class PlayerMovement : MonoBehaviour
         if (controller.isGrounded)
         {
             potentialEnergy = Vector3.zero;
+            animator.SetBool("IsWalking", dir.magnitude > 0.0f);
         }
         else
         {
             potentialEnergy += Physics.gravity * Mathf.Pow(Time.fixedDeltaTime, 2.0f) * 0.5f;
+            animator.SetBool("IsWalking", false);
         }
         dir += potentialEnergy;
 
