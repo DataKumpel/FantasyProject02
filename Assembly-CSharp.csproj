@@ -48,17 +48,19 @@
     <Analyzer Include="/home/thomas/Unity/Hub/Editor/6000.1.3f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/Player/PlayerInteraction.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/TooltipElement.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/NullableSerializableField.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/InventorySlotItemGrab.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/SliderTextValue.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/Item.cs" />
+    <Compile Include="Assets/Scripts/Interactable/BaseInteractable.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/SlotItemGrab.cs" />
+    <Compile Include="Assets/Scripts/Player/PlayerMovement.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/DropdownHideCaptionBorder.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/TooltipWindow.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/DragItemHolder.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/ApplicationExit.cs" />
-    <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/SlotItemDropTarget.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/Inventory.cs" />
     <Compile Include="Assets/DarkPixelRPGUI/Scripts/UI/Equipment/InventorySlotItemDropTarget.cs" />
