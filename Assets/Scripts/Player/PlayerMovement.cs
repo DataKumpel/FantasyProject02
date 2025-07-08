@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         else if (CheckGround() && !isFalling)
         {
             controller.Move(Vector3.down * 1000.0f);
+            animator.SetBool("IsWalking", dir.magnitude > 0.0f);
         }
         else
         {
